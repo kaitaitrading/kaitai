@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <!-- Optimized viewport: perfect scaling on mobile and iPad, prevent auto font adjustment -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>Leading Global Trade | Supply Chain Solution Expert · Fully Responsive</title>
+    <!-- Preconnect to improve font loading speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Modern font system with Chinese fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free icon library) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & GLOBAL BEST PRACTICES ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Disable tap highlight on mobile */
+        html {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f9fafb;
+            color: #1e293b;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* Optimized images: responsive + lazy loading reserved */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Container flexible + safe spacing across devices */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: clamp(1rem, 5vw, 2rem);
+            padding-right: clamp(1rem, 5vw, 2rem);
+        }
+
+        /* Navbar - mobile optimized stacking */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            backdrop-filter: blur(0px);
+            transition: all 0.2s;
+        }
+        
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .logo h1 {
+            font-size: clamp(1.4rem, 6vw, 1.9rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #0f3b5f, #1e7a5c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .logo span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #5b6e8c;
+            display: block;
+            margin-top: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(0.8rem, 3vw, 2rem);
+            list-style: none;
+            align-items: center;
+        }
+        
+        /* All nav links get same background as button */
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            background-color: #1e7a5c;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s ease, transform 0.1s;
+        }
+        
+        .nav-links a:hover {
+            background-color: #0f5a44;
+            transform: translateY(-1px);
+        }
+        
+        /* Contact button style independent but visually consistent */
+        .contact-btn {
+            background-color: #1e7a5c;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .contact-btn:hover {
+            background-color: #0f5a44;
+            transform: translateY(-1px);
+        }
+        
+        /* Hero section - dynamic spacing */
+        .hero {
+            background: linear-gradient(115deg, #ffffff 25%, #eef2f5 100%);
+            padding: clamp(2.5rem, 10vw, 5rem) 0 clamp(3rem, 8vw, 5rem);
+        }
+        
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: clamp(2rem, 6vw, 3.5rem);
+        }
+        
+        .hero-content {
+            flex: 1 1 45%;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e0f2fe;
+            color: #0c4e6e;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 7vw, 3.4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #0b2b38;
+        }
+        
+        .hero-content p {
+            font-size: clamp(0.95rem, 4vw, 1.125rem);
+            color: #475569;
+            margin-bottom: 2rem;
+            max-width: 540px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary, .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: #1e7a5c;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0f5a44;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(30,122,92,0.2);
+        }
+        
+        .btn-outline {
+            border: 1px solid #cbd5e1;
+            background: white;
+            color: #1e293b;
+        }
+        
+        .btn-outline:hover {
+            border-color: #1e7a5c;
+            color: #1e7a5c;
+            background-color: #f0fdf9;
+        }
+        
+        .hero-image {
+            flex: 1 1 40%;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        /* Trust bar */
+        .trust-bar {
+            background-color: white;
+            padding: 28px 0;
+            border-bottom: 1px solid #edf2f7;
+        }
+        
+        .trust-text {
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #62748c;
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+        
+        .logo-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: baseline;
+            gap: clamp(1rem, 5vw, 2.5rem);
+        }
+        
+        .logo-cloud span {
+            font-weight: 500;
+            color: #334155;
+            font-size: clamp(0.8rem, 4vw, 1rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        
+        .logo-cloud i {
+            font-size: 1.2rem;
+            color: #6f8faa;
+        }
+        
+        /* Services & Products */
+        .services, .products {
+            padding: clamp(3rem, 10vw, 5rem) 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 3rem auto;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #0f2c38;
+        }
+        
+        .section-header p {
+            color: #546a7a;
+            font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+        
+        .service-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+            transition: all 0.25s;
+            border: 1px solid #eef2ff;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.02);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            border-color: #cbdde6;
+        }
+        
+        .service-icon {
+            background: #e6f4ea;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-icon i {
+            font-size: 28px;
+            color: #1e7a5c;
+        }
+        
+        .service-card h3 {
+            font-size: 1.45rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .service-card p {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .more-link {
+            color: #1e7a5c;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* Stats section */
+        .stats {
+            background: linear-gradient(120deg, #0b2f3c, #164e42);
+            color: white;
+            padding: clamp(3rem, 8vw, 4.5rem) 0;
+        }
+        
+        .stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: center;
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            flex: 1 1 180px;
+        }
+        
+        .stat-item h3 {
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 800;
+        }
+        
+        /* Product cards */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.25s;
+            border: 1px solid #eef2f6;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 28px -12px rgba(0,0,0,0.12);
+        }
+        
+        .product-img {
+            background: #f1f5f9;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e7a5c;
+            padding: 1.5rem;
+        }
+        
+        .product-img i {
+            font-size: 3.2rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .product-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            color: #236653;
+        }
+        
+        /* Global contact section */
+        .global-cta {
+            background-color: #ffffff;
+            padding: clamp(3rem, 8vw, 4.5rem) 0;
+        }
+        
+        .global-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .global-text {
+            flex: 1.2;
+        }
+        
+        .global-text h2 {
+            font-size: clamp(1.6rem, 6vw, 2.2rem);
+            margin-bottom: 1.2rem;
+        }
+        
+        .contact-details p {
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            word-break: break-word;
+        }
+        
+        .global-map {
+            flex: 1;
+            background: #e2e8f0;
+            border-radius: 32px;
+            min-height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://placehold.co/800x500/eef2f5/94a3b8?text=World+Trade+Network');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .map-placeholder {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(5px);
+            padding: 12px 20px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Inquiry form - fully responsive */
+        .form-section {
+            background: #f1f5f9;
+            padding: clamp(3rem, 8vw, 4.5rem) 0;
+        }
+        
+        .form-card {
+            max-width: 760px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            padding: clamp(1.8rem, 5vw, 2.5rem);
+            box-shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+        }
+        
+        .form-card input, .form-card select, .form-card textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 60px;
+            border: 1px solid #e2e8f0;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #fff;
+        }
+        
+        .form-card textarea {
+            border-radius: 28px;
+            resize: vertical;
+        }
+        
+        .form-card input:focus, .form-card select:focus, .form-card textarea:focus {
+            outline: none;
+            border-color: #1e7a5c;
+            box-shadow: 0 0 0 3px rgba(30,122,92,0.1);
+        }
+        
+        button.btn-primary {
+            background-color: #1e7a5c;
+            border: none;
+            cursor: pointer;
+            width: 80%;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #0f1e2a;
+            color: #cbd5e6;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li, .footer-col p {
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        
+        .footer-col a {
+            color: #cbd5e6;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        
+        .footer-col a:hover {
+            color: white;
+        }
+        
+        .social-icons i {
+            font-size: 1.3rem;
+            margin-right: 18px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        
+        .social-icons i:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #2d3e4e;
+            font-size: 0.75rem;
+        }
+        
+        /* Tablet & mobile extra adjustments */
+        @media (max-width: 768px) {
+            .nav-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                justify-content: center;
+            }
+            
+            .contact-btn {
+                margin-top: 4px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-content h1, .hero-content p {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .hero-badge {
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+            }
+            
+            .stats-grid {
+                justify-content: center;
+            }
+            
+            .stat-item {
+                text-align: center;
+            }
+            
+            .global-flex {
+                flex-direction: column-reverse;
+            }
+            
+            .contact-details p {
+                justify-content: flex-start;
+            }
+            
+            button.btn-primary {
+                width: 100%;
+            }
+        }
+        
+        /* Tablet landscape & iPad large screen optimization */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .hero-grid {
+                gap: 2rem;
+            }
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            .nav-links {
+                gap: 1.8rem;
+            }
+        }
+        
+        /* Large screen whitespace optimization */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+            .hero-content h1 {
+                font-size: 3.8rem;
+            }
+        }
+        
+        /* Smooth scroll offset compensation (for sticky nav anchor) */
+        html {
+            scroll-padding-top: 85px;
+        }
+        
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <h1>LEADING<span>Global · Leading Trade</span></h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#products">PRODUCTS</a></li>
+            <li><a href="#global">GLOBAL NETWORK</a></li>
+            <li><a href="#contact-form">CONTACT</a></li>
+        </ul>
+        <a href="#contact-form" class="contact-btn"><i class="fas fa-headset"></i> Talk to Expert</a>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-globe-asia"></i> 20+ Years Experience · Covering 120 Countries</div>
+            <h1>Global Trade Bridge,<br>Bringing "Made in China" to the World</h1>
+            <p>From supply chain management to overseas customs clearance, we provide one-stop foreign trade solutions. Partner with Leading to expand your global market with ease.</p>
+            <div class="hero-buttons">
+                <a href="#contact-form" class="btn-primary">Get a Quote <i class="fas fa-arrow-right"></i></a>
+                <a href="#services" class="btn-outline">Explore Services</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://placehold.co/800x550/eef2f5/2c6e5c?text=Global+Trade+Hub" alt="Global Trade Network" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-text">Trusted by Global Brands & Strategic Partners</div>
+        <div class="logo-cloud">
+            <span><i class="fab fa-amazon"></i> Amazon Global</span>
+            <span><i class="fas fa-building"></i> Walmart Supply Chain</span>
+            <span><i class="fas fa-ship"></i> Maersk Shipping</span>
+            <span><i class="fas fa-chart-line"></i> Alibaba International</span>
+        </div>
+    </div>
+</div>
+
+<section id="services" class="services">
+    <div class="container">
+        <div class="section-header">
+            <h2>One-Stop Foreign Trade Solutions</h2>
+            <p>From product sourcing to delivery, we integrate global resources and reduce trade risks</p>
+        </div>
+        <div class="cards-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+                <h3>International Sourcing Agent</h3>
+                <p>Deep discovery of quality suppliers, factory audits, negotiations, ensuring product quality and cost advantages.</p>
+                <a href="#" class="more-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-ship"></i></div>
+                <h3>Logistics & Customs Clearance</h3>
+                <p>Sea, air, and rail multimodal transport, professional customs brokerage, real-time cargo tracking.</p>
+                <a href="#" class="more-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>Export Marketing Management</h3>
+                <p>Social media management, Google Ads, B2B platform operation to generate quality leads and inquiries.</p>
+                <a href="#" class="more-link">Learn More →</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                <h3>Currency Settlement & Credit Insurance</h3>
+                <p>Secure foreign exchange settlement, export credit insurance to mitigate payment risks and improve cash flow.</p>
+                <a href="#" class="more-link">Learn More →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container stats-grid">
+        <div class="stat-item"><h3>120+</h3><p>Countries & Regions</p></div>
+        <div class="stat-item"><h3>$2.8B</h3><p>Annual Trade Volume</p></div>
+        <div class="stat-item"><h3>500+</h3><p>Core Partners</p></div>
+        <div class="stat-item"><h3>98%</h3><p>Client Satisfaction</p></div>
+    </div>
+</section>
+
+<section id="products" class="products">
+    <div class="container">
+        <div class="section-header">
+            <h2>Top Foreign Trade Categories</h2>
+            <p>High-quality product lines to meet diverse global demands</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card"><div class="product-img"><i class="fas fa-microchip"></i></div><div class="product-info"><h4>Consumer Electronics</h4><p>Smart wearables, mobile accessories, home appliances with CE/FCC certification.</p><div class="tag">Export to EU/US/SEA</div></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-tshirt"></i></div><div class="product-info"><h4>Textiles & Apparel</h4><p>Fast fashion, functional fabrics, sustainable and eco-friendly collections.</p><div class="tag">OEM/ODM Custom</div></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-cogs"></i></div><div class="product-info"><h4>Machinery & Tools</h4><p>Construction machinery, hardware tools with technical support and spare parts.</p><div class="tag">International Certified</div></div></div>
+            <div class="product-card"><div class="product-img"><i class="fas fa-apple-alt"></i></div><div class="product-info"><h4>Food & Agricultural Products</h4><p>Frozen fruits & vegetables, tea, seasonings meeting high import standards.</p><div class="tag">HACCP Certified</div></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="global" class="global-cta">
+    <div class="container global-flex">
+        <div class="global-text">
+            <h2>Connecting the World · Local Expertise</h2>
+            <p>We have offices in Shanghai, Los Angeles, Hamburg, and Melbourne, providing 24/7 rapid response. Whether you want to export or import, Leading Trade is your reliable trade partner.</p>
+            <div class="contact-details" id="contact">
+                <p><i class="fas fa-map-marker-alt" style="color:#1e7a5c"></i> Global HQ: 100 Century Avenue, Pudong New Area, Shanghai, China</p>
+                <p><i class="fas fa-phone-alt"></i> Phone: +86 21 6123 8888</p>
+                <p><i class="fas fa-envelope"></i> Email: trade@leading-intl.com</p>
+                <p><i class="fas fa-clock"></i> Service Hours: Mon-Fri 9:00 - 18:00 (GMT+8)</p>
+            </div>
+            <div style="margin-top: 26px;">
+                <a href="#" class="btn-primary" style="background:#0f5a44;"><i class="fab fa-whatsapp"></i> WhatsApp Instant Chat</a>
+            </div>
+        </div>
+        <div class="global-map">
+            <div class="map-placeholder"><i class="fas fa-map-marked-alt"></i> Global Offices</div>
+        </div>
+    </div>
+</section>
+
+<section id="contact-form" class="form-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Get Your Custom Foreign Trade Solution</h2>
+            <p>Fill out the form and a senior trade consultant will contact you within 24 hours</p>
+        </div>
+        <div class="form-card">
+            <form action="#" method="post">
+                <div class="form-grid">
+                    <input type="text" placeholder="Your Full Name" required>
+                    <input type="email" placeholder="Company Email" required>
+                    <input type="tel" placeholder="Phone / WhatsApp">
+                    <select>
+                        <option>Service of Interest</option>
+                        <option>Sourcing Agent</option>
+                        <option>International Logistics</option>
+                        <option>Overseas Marketing</option>
+                        <option>Currency & Credit Consulting</option>
+                    </select>
+                </div>
+                <textarea rows="3" placeholder="Tell us about your needs... e.g., target market or product category" style="width:100%; margin-top: 1.2rem;"></textarea>
+                <div style="text-align:center; margin-top: 1.8rem;">
+                    <button type="submit" class="btn-primary" style="cursor:pointer; border:none;">Submit Inquiry <i class="fas fa-paper-plane"></i></button>
+                    <p style="font-size: 0.7rem; margin-top: 1rem; color:#62748c;">Your information is strictly confidential. We are committed to providing professional foreign trade services.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>Leading Trade</h4><p>Making global trade simpler, building long-term trusted partnerships. We are not just a service provider, but a strategic partner for your global expansion.</p><div class="social-icons"><i class="fab fa-linkedin-in"></i><i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Industry Insights</a></li><li><a href="#">Case Studies</a></li><li><a href="#">Careers</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul><li><a href="#">FAQs</a></li><li><a href="#">Shipment Tracking</a></li><li><a href="#">Compliance Policy</a></li><li><a href="#">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Use</a></li><li><a href="#">Cookie Policy</a></li></ul></div>
+        </div>
+        <div class="copyright"><p>© 2026 Leading International Trade Co., Ltd. | All Rights Reserved | Global Vision, Local Service</p></div>
+    </div>
+</footer>
+
+<script>
+    (function() {
+        // Smooth scroll with navbar offset compensation
+        const allLinks = document.querySelectorAll('.nav-links a, .contact-btn, .btn-primary, .btn-outline, a[href^="#"]');
+        allLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#') && href !== '#') {
+                    const targetElem = document.querySelector(href);
+                    if (targetElem) {
+                        e.preventDefault();
+                        const offsetTop = targetElem.getBoundingClientRect().top + window.scrollY;
+                        const navHeight = document.querySelector('.navbar')?.offsetHeight || 80;
+                        window.scrollTo({ top: offsetTop - navHeight - 12, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        // Form friendly alert
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('✅ Thank you for your inquiry! Our foreign trade consultant will get back to you shortly. (Demo template)');
+                form.reset();
+            });
+        }
+    })();
+</script>
+</body>
+</html>
