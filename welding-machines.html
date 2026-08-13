@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>All Equipment | Leading Machinery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-tap-highlight-color: transparent;
+            scroll-behavior: smooth;
+            scroll-padding-top: 85px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafcfb;
+            color: #1e293b;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: clamp(1rem, 5vw, 2rem);
+            padding-right: clamp(1rem, 5vw, 2rem);
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+        }
+        
+        .nav-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .logo h1 {
+            font-size: clamp(1.4rem, 6vw, 2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #1a4c3b, #c4451c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .logo span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #c2410c;
+            background: #fff1ed;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 40px;
+            margin-top: 6px;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(0.6rem, 3vw, 1.5rem);
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            background-color: #2c5f4a;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            background-color: #c2410c;
+            transform: translateY(-2px);
+        }
+        
+        .contact-btn {
+            background-color: #c2410c;
+            color: white;
+            padding: 6px 18px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        
+        .contact-btn:hover {
+            background-color: #9a3412;
+            transform: translateY(-2px);
+        }
+
+        /* 页面头部banner */
+        .page-banner {
+            background: linear-gradient(115deg, #ffffff 20%, #f2f4f0 100%);
+            padding: clamp(2rem, 8vw, 3.5rem) 0;
+            text-align: center;
+        }
+        .page-banner h1 {
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            color: #1e3a2f;
+            margin-bottom: 0.8rem;
+            font-weight: 800;
+        }
+        .page-banner p {
+            max-width: 700px;
+            margin: 0 auto;
+            color:#2d3e3a;
+            font-size: clamp(0.95rem,3vw,1.05rem);
+        }
+
+        /* 产品卡片区域 */
+        .product-list {
+            padding: clamp(3rem, 8vw, 5rem) 0;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .product-card {
+            background:#fff;
+            border-radius:32px;
+            overflow:hidden;
+            border:1px solid #e2ede7;
+            transition:0.25s;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow:0 20px 30px -10px rgba(0,0,0,0.12);
+        }
+        .product-img-box {
+            height:220px;
+            background:#eef2f5;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            cursor: pointer;
+        }
+        .product-img-box img {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition: transform 0.3s;
+        }
+        .product-img-box:hover img {
+            transform: scale(1.03);
+        }
+        .product-info {
+            padding:1.5rem;
+        }
+        .product-info h3 {
+            font-size:1.2rem;
+            margin-bottom:0.6rem;
+            font-weight:700;
+        }
+        .product-info p {
+            color:#475569;
+            font-size:0.9rem;
+            margin-bottom:1rem;
+        }
+        .product-info a {
+            color:#c2410c;
+            font-weight:700;
+            text-decoration:none;
+            display:inline-flex;
+            align-items:center;
+            gap:6px;
+        }
+
+        /* ========== 【修复后的弹窗样式】 ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto; /* 整个弹窗滚动，不再局部限制图片高度 */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+        @media (max-width:768px){
+            .modal-box {
+                grid-template-columns: 1fr;
+            }
+        }
+        .modal-img-wrap {
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-img-wrap img {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* 核心：完整展示图片，不裁切 */
+        }
+        .modal-content-wrap {
+            padding: 2rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height:36px;
+            border-radius:50%;
+            background:#fff;
+            border:none;
+            font-size:18px;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .modal-content-wrap h2 {
+            margin-bottom: 1rem;
+            color:#1e293b;
+        }
+        .modal-content-wrap .desc-text {
+            color:#475569;
+            line-height:1.7;
+    margin-bottom:1.5rem;
+    text-align: justify;
+    hyphens: auto;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            cursor: pointer;
+            background-color: #c2410c;
+            color: white;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #9a3412;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background-color: #0e1f1a;
+            color: #cbdcd2;
+            padding: 3rem 0 1.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .footer-col h4 {
+            color: #f7ede4;
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col li, .footer-col p {
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        .footer-col a {
+            color: #cbdcd2;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-col a:hover {
+            color: #dd884b;
+        }
+        .social-icons i {
+            font-size: 1.3rem;
+            margin-right: 18px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .social-icons i:hover {
+            color: #dd7a3a;
+            transform: translateY(-2px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #2c463b;
+            font-size: 0.75rem;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .nav-flex {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+            }
+            .contact-btn {
+                margin-top: 6px;
+            }
+            html {
+                scroll-padding-top: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container nav-flex">
+        <div class="logo">
+            <h1>LEADING MACHINERY<span>Heavy Industry & Global Trade</span></h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="index.html#services">SERVICES</a></li>
+            <li><a href="products.html" style="background:#c2410c;">EQUIPMENT</a></li>
+            <li><a href="index.html#global">GLOBAL NETWORK</a></li>
+            <li><a href="index.html#contact-form">INQUIRY</a></li>
+        </ul>
+        <a href="index.html#contact-form" class="contact-btn"><i class="fas fa-gear"></i> Machine Expert</a>
+    </div>
+</nav>
+
+<section class="page-banner">
+    <div class="container">
+        <h1>Heavy Equipment & Industrial Machinery</h1>
+        <p>High-performance machinery tailored for infrastructure, mining, agriculture and energy sectors. Send inquiry to get technical parameters & best quotation.</p>
+    </div>
+</section>
+
+<section class="product-list">
+    <div class="container">
+        <div class="product-grid">
+            <!-- 产品卡片1 -->
+            <div class="product-card"
+                 data-img="./image/weldingmachine/BaghouseDustCollectorWeldingMachine.png"
+                 data-title="Baghouse Dust Collector Welding Machine"
+                 data-desc="This bag cage welding machine is designed for producing filter bag cages used in dust collection systems. It completes cage body, end cap, and bottom cap welding in one operation, boosting efficiency and reducing labor costs. The system features auto re-welding: it detects abnormal spots and attempts repair. If failed, an alarm alerts the operator. A material selection function adjusts current waveforms for different steel types. The rigid steel frame and linear guide rails ensure excellent cage straightness. Ring spacing is adjustable for up to 54 support rings. The touchscreen supports multiple languages, and selectable simultaneous or time-sharing modes adapt to different power conditions.">
+                <div class="product-img-box">
+                    <img src="./image/weldingmachine/BaghouseDustCollectorWeldingMachine.png" alt="Baghouse Dust Collector Welding Machine">
+                </div>
+                <div class="product-info">
+                    <h3>Baghouse Dust Collector Welding Machine</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 产品卡片2 -->
+            <div class="product-card"
+                 data-img="images/excavator.jpg"
+                 data-title="Construction Excavators"
+                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
+                <div class="product-img-box">
+                    <img src="images/excavator.jpg" alt="Construction Excavators">
+                </div>
+                <div class="product-info">
+                    <h3>Construction Excavators</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 其余卡片你照上面格式复制，补齐data-img / data-title / data-desc -->
+            <div class="product-card"
+                 data-img="images/excavator.jpg"
+                 data-title="Construction Excavators"
+                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
+                <div class="product-img-box">
+                    <img src="images/excavator.jpg" alt="Construction Excavators">
+                </div>
+                <div class="product-info">
+                    <h3>Construction Excavators</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="product-card"
+                 data-img="images/excavator.jpg"
+                 data-title="Construction Excavators"
+                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
+                <div class="product-img-box">
+                    <img src="images/excavator.jpg" alt="Construction Excavators">
+                </div>
+                <div class="product-info">
+                    <h3>Construction Excavators</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+        <div style="text-align:center;margin-top:3rem;">
+            <a href="index.html#contact-form" class="btn-primary">Request Full Equipment Catalog <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- 弹窗模块 -->
+<div class="modal-overlay" id="productModal">
+    <div class="modal-box">
+        <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+        <div class="modal-img-wrap">
+            <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-content-wrap">
+            <h2 id="modalTitle"></h2>
+            <div class="desc-text" id="modalDesc"></div>
+            <a href="index.html#contact-form" class="btn-primary">Get Quote <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>Leading Machinery</h4><p>Heavy equipment supply chain specialists, delivering industrial excellence and long-term partnership for global contractors.</p><div class="social-icons"><i class="fab fa-linkedin-in"></i><i class="fab fa-facebook-f"></i><i class="fab fa-youtube"></i><i class="fab fa-weixin"></i></div></div>
+            <div class="footer-col"><h4>Quick Support</h4><ul><li><a href="#">Technical Library</a></li><li><a href="#">Machine Manuals</a></li><li><a href="#">Project Cases</a></li><li><a href="#">Service Network</a></li></ul></div>
+            <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Spare Parts Catalog</a></li><li><a href="#">Trade Compliance</a></li><li><a href="#">Shipping & Logistics</a></li><li><a href="#">Financing Support</a></li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Warranty Terms</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Export Regulation</a></li></ul></div>
+        </div>
+        <div class="copyright"><p>© 2026 Leading Machinery International Co., Ltd. | Heavy Equipment Foreign Trade Specialist | All Rights Reserved</p></div>
+    </div>
+</footer>
+
+<script>
+// 弹窗逻辑
+const modal = document.getElementById('productModal');
+const modalImg = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const closeBtn = document.getElementById('closeModal');
+
+// 点击图片打开弹窗
+document.querySelectorAll('.product-img-box').forEach(box => {
+    box.addEventListener('click', function(){
+        const card = this.closest('.product-card');
+        modalImg.src = card.dataset.img;
+        modalTitle.textContent = card.dataset.title;
+        modalDesc.textContent = card.dataset.desc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    })
+})
+
+// 关闭弹窗
+function closeModalFunc(){
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+closeBtn.addEventListener('click', closeModalFunc);
+modal.addEventListener('click', function(e){
+    if(e.target === modal){
+        closeModalFunc();
+    }
+})
+
+// 页面内平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if(href !== '#'){
+            const target = document.querySelector(href);
+            if(target) {
+                e.preventDefault();
+                const navHeight = document.querySelector('.navbar').offsetHeight || 80;
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY - navHeight - 12,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    })
+})
+</script>
+
+</body>
+</html>

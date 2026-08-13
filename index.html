@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <!-- 优化视口：移动端完美缩放，防止自动调整字体 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>领航机械 | 全球工业装备与供应链解决方案专家 · 重型机械出口领导者</title>
+    <title>Machinery | Global Industrial Equipment and Supply Chain Solutions Expert · Leader in Heavy Machinery Export</title>
     <!-- 预连接提升字体加载速度 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,6 +97,10 @@
             align-items: center;
         }
         
+        .nav-links > li {
+            position: relative;
+        }
+
         .nav-links a {
             text-decoration: none;
             font-weight: 600;
@@ -115,6 +119,44 @@
         .nav-links a:hover {
             background-color: #c2410c;
             transform: translateY(-2px);
+        }
+
+        /* ========== 新增下拉菜单样式 ========== */
+        .dropdown-menu {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            min-width: 200px;
+            padding: 10px 0;
+            transition: all 0.22s ease;
+            z-index: 999;
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-menu a {
+            background: transparent;
+            color: #1e293b;
+            border-radius: 0;
+            padding: 10px 20px;
+            width: 100%;
+            display: flex;
+            border-radius: 0;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f7ede6;
+            color: #c2410c;
+            transform: none;
+        }
+        /* hover显示下拉 */
+        .nav-item-dropdown:hover .dropdown-menu {
+            visibility: visible;
+            opacity: 1;
         }
         
         .contact-btn {
@@ -173,6 +215,14 @@
             .hero-image {
                 order: 2;
                 margin-top: 0.5rem;
+            }
+            /* 移动端下拉菜单适配 */
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                background: #f8f8f8;
+                margin-top:8px;
+                border-radius:12px;
             }
         }
         
@@ -264,7 +314,7 @@
         
         .trust-text {
             text-align: center;
-            font-size: 0.75rem;
+            font-size: 1.75rem;
             letter-spacing: 1.5px;
             color: #cfdfd5;
             margin-bottom: 22px;
@@ -447,25 +497,17 @@
         
         .global-map {
             flex: 1;
-            background: #cdd7ce;
             border-radius: 32px;
             min-height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('https://placehold.co/800x500/d9e0d6/b34e22?text=Global+Machinery+Hub');
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
+            position: relative;
         }
-        
-        .map-placeholder {
-            background: rgba(0, 0, 0, 0.65);
-            backdrop-filter: blur(6px);
-            padding: 12px 26px;
-            border-radius: 60px;
-            color: white;
-            font-weight: 700;
-            font-size: 0.9rem;
+        /* YouTube封面hover动画 */
+        .youtube-cover-link img{
+            transition: transform 0.35s ease;
+        }
+        .youtube-cover-link:hover img{
+            transform: scale(1.06);
         }
         
         /* 询盘表单 */
@@ -803,15 +845,25 @@
 <nav class="navbar">
     <div class="container nav-flex">
         <div class="logo">
-            <h1>LEADING MACHINERY<span>Heavy Industry & Global Trade</span></h1>
+            <h1>MACHINERY<span>Heavy Industry & Global Trade</span></h1>
         </div>
         <ul class="nav-links">
             <li><a href="#home">HOME</a></li>
             <li><a href="#services">SERVICES</a></li>
-            <!-- EQUIPMENT 内部跳转至产品区块 -->
-            <li><a href="#products">EQUIPMENT</a></li>
+            <!-- ========== 修改为下拉菜单结构 ========== -->
+            <li class="nav-item-dropdown">
+                <a href="#"><span>PRODUCTS</span> <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                    <!-- 在这里修改href链接地址 -->
+                    <li><a href="welding-machines.html">Welding Machines</a></li>
+                    <li><a href="rim-machinery.html">Rim Making Equipment</a></li>
+                    <li><a href="spare-parts.html">Spare Parts & Attachments</a></li>
+                    <li><a href="custom-line.html">Custom Production Lines</a></li>
+                    <li><a href="products.html">View All Products</a></li>
+                </ul>
+            </li>
             <li><a href="#global">GLOBAL NETWORK</a></li>
-            <li><a href="#contact-form">INQUIRY</a></li>
+            <!-- <li><a href="#contact-form">INQUIRY</a></li> -->
         </ul>
         <a href="#contact-form" class="contact-btn"><i class="fas fa-gear"></i> Machine Expert</a>
     </div>
@@ -830,7 +882,7 @@
         </div>
         <div class="hero-image">
             <!-- 重点：手机端图片会位于文字下方 (flex列向排列 + order 保证) -->
-            <img src="https://placehold.co/800x550/eef2f5/2c6e5c?text=Global+Trade+Hub" alt="Global Machinery Trade Network" loading="lazy">
+            <img src="./image/mainpage/homepage1.png" alt="Global Machinery Trade Network" loading="lazy">
         </div>
     </div>
 </section>
@@ -838,12 +890,12 @@
 <div class="trust-bar">
     <div class="container">
         <div class="trust-text">TRUSTED BY TOP MACHINERY BRANDS & MINING GROUPS</div>
-        <div class="logo-cloud">
+        <!-- <div class="logo-cloud">
             <span class="brand-item"><i class="fas fa-tractor"></i> Caterpillar Partner</span>
             <span class="brand-item"><i class="fas fa-hard-hat"></i> SANY Group</span>
             <span class="brand-item"><i class="fas fa-crane"></i> Liebherr Supply</span>
             <span class="brand-item"><i class="fas fa-gears"></i> Komatsu Global</span>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -891,21 +943,9 @@
     </div>
 </section>
 
-<section id="products" class="products">
-    <div class="container">
-        <div class="section-header">
-            <h2>Heavy Equipment & Industrial Machinery</h2>
-            <p>High-performance machinery tailored for infrastructure, mining, agriculture and energy sectors</p>
-        </div>
-        <!-- 移除原有产品卡片，只保留跳转按钮 -->
-        <div class="product-action-wrap">
-            <!-- View All Products 内部页面跳转 -->
-            <a href="products.html" class="btn-primary">
-                View All Products <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-</section>
+
+
+
 
 <section id="global" class="global-cta">
     <div class="container global-flex">
@@ -923,8 +963,17 @@
                 <a href="javascript:;" id="openWhatsappModal" class="btn-primary" style="background:#9a3412;"><i class="fab fa-whatsapp"></i> WhatsApp Machinery Inquiry</a>
             </div>
         </div>
+        <!-- 【已修改】右侧替换为YouTube频道跳转封面 -->
         <div class="global-map">
-            <div class="map-placeholder"><i class="fas fa-globe-americas"></i> 12 Overseas Machinery Centers</div>
+            <a href="https://www.youtube.com/@WyattWang-KT" target="_blank" rel="noopener noreferrer" class="youtube-cover-link" style="display:block;width:100%;height:100%;position:relative;">
+                <img src="./image/mainpage/homepage1.png" alt="YouTube Machinery Channel" style="width:100%;height:100%;object-fit:cover;">
+                <!-- 渐变遮罩文字 -->
+                <div style="position:absolute;inset:0;background:linear-gradient(0deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.25) 50%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
+                    <i class="fab fa-youtube" style="font-size:52px;color:#ff0000;"></i>
+                    <span style="color:#fff;font-weight:700;font-size:1.05rem;text-align:center;padding:0 12px;">Visit Our YouTube Channel</span>
+                    <span style="color:#e2ede7;font-size:0.85rem;">Watch Machinery Production Videos</span>
+                </div>
+            </a>
         </div>
     </div>
 </section>
@@ -967,7 +1016,7 @@
     </div>
 </section>
 
-<!-- RFQ提交成功弹窗 -->=
+<!-- RFQ提交成功弹窗 -->
 <div class="success-modal" id="rfqSuccessModal">
     <div class="success-modal-box">
         <h3>✅ RFQ Sent Successfully!</h3>
