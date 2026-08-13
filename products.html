@@ -44,7 +44,7 @@
             padding-right: clamp(1rem, 5vw, 2rem);
         }
 
-        /* 导航栏样式和首页完全统一 */
+        /* 导航栏样式 */
         .navbar {
             background-color: #ffffff;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
@@ -132,7 +132,7 @@
             transform: translateY(-2px);
         }
 
-        /* 产品页面头部banner */
+        /* 页面头部banner */
         .page-banner {
             background: linear-gradient(115deg, #ffffff 20%, #f2f4f0 100%);
             padding: clamp(2rem, 8vw, 3.5rem) 0;
@@ -177,6 +177,16 @@
             display:flex;
             align-items:center;
             justify-content:center;
+            cursor: pointer;
+        }
+        .product-img-box img {
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition: transform 0.3s;
+        }
+        .product-img-box:hover img {
+            transform: scale(1.03);
         }
         .product-info {
             padding:1.5rem;
@@ -200,8 +210,80 @@
             gap:6px;
         }
 
-        /* 通用按钮样式 */
-        .btn-primary, .btn-outline {
+        /* ========== 【修复后的弹窗样式】 ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: 24px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto; /* 整个弹窗滚动，不再局部限制图片高度 */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+        @media (max-width:768px){
+            .modal-box {
+                grid-template-columns: 1fr;
+            }
+        }
+        .modal-img-wrap {
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-img-wrap img {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            object-fit: contain; /* 核心：完整展示图片，不裁切 */
+        }
+        .modal-content-wrap {
+            padding: 2rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height:36px;
+            border-radius:50%;
+            background:#fff;
+            border:none;
+            font-size:18px;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .modal-content-wrap h2 {
+            margin-bottom: 1rem;
+            color:#1e293b;
+        }
+        .modal-content-wrap .desc-text {
+            color:#475569;
+            line-height:1.7;
+            margin-bottom:1.5rem;
+        }
+        .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -212,17 +294,12 @@
             transition: all 0.2s ease;
             font-size: 0.9rem;
             cursor: pointer;
-        }
-        .btn-primary {
             background-color: #c2410c;
             color: white;
             border: none;
-            box-shadow: 0 2px 5px rgba(194,65,12,0.2);
         }
         .btn-primary:hover {
             background-color: #9a3412;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -8px rgba(194,65,12,0.35);
         }
 
         /* 页脚样式 */
@@ -320,53 +397,82 @@
 <section class="product-list">
     <div class="container">
         <div class="product-grid">
-            <!-- 产品卡片，后续自行替换图片、名称 -->
-            <div class="product-card">
+            <!-- 产品卡片1 -->
+            <div class="product-card"
+                 data-img="./image/weldingmachine/BaghouseDustCollectorWeldingMachine.png"
+                 data-title="Baghouse Dust Collector Welding Machine"
+                 data-desc="This bag cage welding machine is designed for producing filter bag cages used in dust collection systems. It completes cage body, end cap, and bottom cap welding in one operation, boosting efficiency and reducing labor costs. The system features auto re-welding: it detects abnormal spots and attempts repair. If failed, an alarm alerts the operator. A material selection function adjusts current waveforms for different steel types. The rigid steel frame and linear guide rails ensure excellent cage straightness. Ring spacing is adjustable for up to 54 support rings. The touchscreen supports multiple languages, and selectable simultaneous or time-sharing modes adapt to different power conditions.">
                 <div class="product-img-box">
-                    <i class="fas fa-tractor" style="font-size:48px;color:#2c5f4a;"></i>
+                    <img src="./image/weldingmachine/BaghouseDustCollectorWeldingMachine.png" alt="Baghouse Dust Collector Welding Machine">
+                </div>
+                <div class="product-info">
+                    <h3>Baghouse Dust Collector Welding Machine</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 产品卡片2 -->
+            <div class="product-card"
+                 data-img="images/excavator.jpg"
+                 data-title="Construction Excavators"
+                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
+                <div class="product-img-box">
+                    <img src="images/excavator.jpg" alt="Construction Excavators">
                 </div>
                 <div class="product-info">
                     <h3>Construction Excavators</h3>
-                    <p>Multiple tonnage models, CE certified, stable performance for mining & building projects.</p>
                     <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <!-- 其余卡片你照上面格式复制，补齐data-img / data-title / data-desc -->
+            <div class="product-card"
+                 data-img="images/excavator.jpg"
+                 data-title="Construction Excavators"
+                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
                 <div class="product-img-box">
-                    <i class="fas fa-truck-pickup" style="font-size:48px;color:#2c5f4a;"></i>
+                    <img src="images/excavator.jpg" alt="Construction Excavators">
                 </div>
                 <div class="product-info">
-                    <h3>Dumper & Loader</h3>
-                    <p>Heavy load transport equipment, suitable for quarry, road construction projects.</p>
+                    <h3>Construction Excavators</h3>
                     <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="product-card">
+
+            <div class="product-card"
+                 data-img="images/excavator.jpg"
+                 data-title="Construction Excavators"
+                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
                 <div class="product-img-box">
-                    <i class="fas fa-crutch" style="font-size:48px;color:#2c5f4a;"></i>
+                    <img src="images/excavator.jpg" alt="Construction Excavators">
                 </div>
                 <div class="product-info">
-                    <h3>Crushing & Screening Plant</h3>
-                    <p>Mobile & stationary stone crushing line, complete configuration available.</p>
+                    <h3>Construction Excavators</h3>
                     <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="product-img-box">
-                    <i class="fas fa-gears" style="font-size:48px;color:#2c5f4a;"></i>
-                </div>
-                <div class="product-info">
-                    <h3>Spare Parts & Attachments</h3>
-                    <p>Original compatible spare parts for all series engineering machinery.</p>
-                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+
         </div>
         <div style="text-align:center;margin-top:3rem;">
             <a href="index.html#contact-form" class="btn-primary">Request Full Equipment Catalog <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 </section>
+
+<!-- 弹窗模块 -->
+<div class="modal-overlay" id="productModal">
+    <div class="modal-box">
+        <button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+        <div class="modal-img-wrap">
+            <img id="modalImage" src="" alt="">
+        </div>
+        <div class="modal-content-wrap">
+            <h2 id="modalTitle"></h2>
+            <div class="desc-text" id="modalDesc"></div>
+            <a href="index.html#contact-form" class="btn-primary">Get Quote <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</div>
 
 <footer class="footer">
     <div class="container">
@@ -381,23 +487,55 @@
 </footer>
 
 <script>
-    // 页面内平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if(href !== '#'){
-                const target = document.querySelector(href);
-                if(target) {
-                    e.preventDefault();
-                    const navHeight = document.querySelector('.navbar').offsetHeight || 80;
-                    window.scrollTo({
-                        top: target.getBoundingClientRect().top + window.scrollY - navHeight - 12,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        })
+// 弹窗逻辑
+const modal = document.getElementById('productModal');
+const modalImg = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const closeBtn = document.getElementById('closeModal');
+
+// 点击图片打开弹窗
+document.querySelectorAll('.product-img-box').forEach(box => {
+    box.addEventListener('click', function(){
+        const card = this.closest('.product-card');
+        modalImg.src = card.dataset.img;
+        modalTitle.textContent = card.dataset.title;
+        modalDesc.textContent = card.dataset.desc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     })
+})
+
+// 关闭弹窗
+function closeModalFunc(){
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+closeBtn.addEventListener('click', closeModalFunc);
+modal.addEventListener('click', function(e){
+    if(e.target === modal){
+        closeModalFunc();
+    }
+})
+
+// 页面内平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if(href !== '#'){
+            const target = document.querySelector(href);
+            if(target) {
+                e.preventDefault();
+                const navHeight = document.querySelector('.navbar').offsetHeight || 80;
+                window.scrollTo({
+                    top: target.getBoundingClientRect().top + window.scrollY - navHeight - 12,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    })
+})
 </script>
+
 </body>
 </html>
