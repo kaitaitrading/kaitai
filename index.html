@@ -121,20 +121,36 @@
             transform: translateY(-2px);
         }
 
-        /* ========== 新增下拉菜单样式 ========== */
+        /* ========== 下拉菜单样式【优化版｜解决鼠标移动丢失菜单】 ========== */
+        .nav-item-dropdown {
+            position: relative;
+        }
+        /* 透明缓冲层：填补按钮与下拉菜单空隙，鼠标移动不会断开hover */
+        .nav-item-dropdown::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 14px;
+            left: 0;
+            top: 100%;
+            z-index: 9998;
+        }
         .dropdown-menu {
             visibility: hidden;
             opacity: 0;
             position: absolute;
             top: calc(100% + 8px);
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             background: #ffffff;
             border-radius: 16px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.1);
             min-width: 200px;
             padding: 10px 0;
-            transition: all 0.22s ease;
-            z-index: 999;
+            /* 关键：离开时延迟0.25s隐藏，给用户移动鼠标时间 */
+            transition: visibility 0s linear 0.25s, opacity 0.22s ease;
+            z-index: 9999;
+            pointer-events: none;
         }
         .dropdown-menu li {
             list-style: none;
@@ -146,19 +162,34 @@
             padding: 10px 20px;
             width: 100%;
             display: flex;
-            border-radius: 0;
         }
         .dropdown-menu a:hover {
             background-color: #f7ede6;
             color: #c2410c;
             transform: none;
         }
-        /* hover显示下拉 */
-        .nav-item-dropdown:hover .dropdown-menu {
+
+        /* 桌面端hover生效（>=769px） */
+        @media (min-width:769px) {
+            .nav-item-dropdown:hover .dropdown-menu {
+                visibility: visible;
+                opacity: 1;
+                transition-delay: 0s;
+                pointer-events: auto;
+            }
+            /* PC端禁用点击触发，仅hover生效 */
+            .dropdown-trigger {
+                pointer-events: none;
+            }
+        }
+        /* open类：JS仅移动端点击控制展开 */
+        .nav-item-dropdown.open .dropdown-menu {
             visibility: visible;
             opacity: 1;
+            transition-delay: 0s;
+            pointer-events: auto;
         }
-        
+
         .contact-btn {
             background-color: #c2410c;
             color: white;
@@ -204,7 +235,7 @@
             order: 2;
         }
         
-        /* 手机端 (max-width: 768px) 时图片显示在文字下方——已经是 order 自然流动，通过调整order确保自上而下 */
+        /* 手机端 (max-width: 768px) 布局调整 */
         @media (max-width: 768px) {
             .hero-grid {
                 flex-direction: column;
@@ -216,13 +247,14 @@
                 order: 2;
                 margin-top: 0.5rem;
             }
-            /* 移动端下拉菜单适配 */
+            /* ❗重要：删除旧代码里 position:static，保持绝对定位，杜绝空白 */
             .dropdown-menu {
-                position: static;
-                box-shadow: none;
-                background: #f8f8f8;
-                margin-top:8px;
-                border-radius:12px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            /* 移动端按钮允许点击 */
+            .dropdown-trigger {
+                pointer-events: auto;
             }
         }
         
@@ -852,7 +884,7 @@
             <li><a href="#services">SERVICES</a></li>
             <!-- ========== 修改为下拉菜单结构 ========== -->
             <li class="nav-item-dropdown">
-                <a href="#"><span>PRODUCTS</span> <i class="fas fa-chevron-down"></i></a>
+                <a href="#" class="dropdown-trigger"><span>PRODUCTS</span> <i class="fas fa-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                     <!-- 在这里修改href链接地址 -->
                     <li><a href="welding-machines.html">Welding Machines</a></li>
@@ -865,7 +897,7 @@
             <li><a href="#global">GLOBAL NETWORK</a></li>
             <!-- <li><a href="#contact-form">INQUIRY</a></li> -->
         </ul>
-        <a href="#contact-form" class="contact-btn"><i class="fas fa-gear"></i> Machine Expert</a>
+        <a href="#contact-form" class="contact-btn"><i class="fas fa-cogs"></i> Machine Expert</a>
     </div>
 </nav>
 
@@ -1028,10 +1060,10 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col"><h4>Leading Machinery</h4><p>Heavy equipment supply chain specialists, delivering industrial excellence and long-term partnership for global contractors.</p><div class="social-icons"><i class="fab fa-linkedin-in"></i><i class="fab fa-facebook-f"></i><i class="fab fa-youtube"></i><i class="fab fa-weixin"></i></div></div>
-            <div class="footer-col"><h4>Quick Support</h4><ul><li><a href="#">Technical Library</a></li><li><a href="#">Machine Manuals</a></li><li><a href="#">Project Cases</a></li><li><a href="#">Service Network</a></li></ul></div>
-            <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Spare Parts Catalog</a></li><li><a href="#">Trade Compliance</a></li><li><a href="#">Shipping & Logistics</a></li><li><a href="#">Financing Support</a></li></ul></div>
-            <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Warranty Terms</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Export Regulation</a></li></ul></div>
+            <div class="footer-col"><h4>Leading Machinery</h4><p>Heavy equipment supply chain specialists, delivering reliable machinery solutions for global industrial contractors.</p><div class="social-icons"><i class="fab fa-linkedin-in"></i><i class="fab fa-facebook-f"></i><i class="fab fa-youtube"></i><i class="fab fa-weixin"></i></div></div>
+            <div class="footer-col"><h4>Quick Support</h4><ul><li><a href="#">Technical Documents</a></li><li><a href="#">Machine Manuals</a></li><li><a href="#">Project Cases</a></li><li><a href="#">Service Network</a></li></ul></div>
+            <div class="footer-col"><h4>Resources</h4><ul><li><a href="#">Spare Parts Catalog</a></li><li><a href="#">Export Compliance</a></li><li><a href="#">Shipping & Logistics</a></li><li><a href="#">Trade Financing</a></li></ul></div>
+            <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Warranty Policy</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Export Terms</a></li></ul></div>
         </div>
         <div class="copyright"><p>© 2026 Leading Machinery International Co., Ltd. | Heavy Equipment Foreign Trade Specialist | All Rights Reserved</p></div>
     </div>
@@ -1085,6 +1117,44 @@
                 }
             });
         });
+
+        // ========== Products下拉菜单【新版逻辑｜PC hover / Mobile Click】 ==========
+        const BREAKPOINT = 768;
+        const dropdownTrigger = document.querySelector('.dropdown-trigger');
+        const dropdownWrap = document.querySelector('.nav-item-dropdown');
+        const menu = document.querySelector('.dropdown-menu');
+
+        function closeMenu() {
+            dropdownWrap.classList.remove('open');
+        }
+        function toggleMenu(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdownWrap.classList.toggle('open');
+        }
+
+        // 事件挂载控制器
+        function bindDropdownEvents() {
+            // 移除旧事件，防止重复绑定
+            dropdownTrigger.removeEventListener('click', toggleMenu);
+            document.removeEventListener('click', closeMenu);
+            menu.removeEventListener('click', e => e.stopPropagation());
+
+            if (window.innerWidth <= BREAKPOINT) {
+                // 移动端启用点击逻辑
+                dropdownTrigger.addEventListener('click', toggleMenu);
+                document.addEventListener('click', closeMenu);
+                menu.addEventListener('click', e => e.stopPropagation());
+            } else {
+                // PC端：交给CSS hover，强制关闭打开状态
+                closeMenu();
+            }
+        }
+        // 初始化
+        bindDropdownEvents();
+        // 窗口大小变化时重新判断
+        window.addEventListener('resize', bindDropdownEvents);
+
 
         // ========== RFQ表单 formsubmit 逻辑 ==========
         const rfqForm = document.getElementById('rfqForm');
