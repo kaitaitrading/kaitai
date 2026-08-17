@@ -244,11 +244,14 @@
             align-items:center;
             justify-content:center;
             cursor: pointer;
+            padding: 12px;
         }
         .product-img-box img {
-            width:100%;
-            height:100%;
-            object-fit:cover;
+            max-width:100%;
+            max-height:100%;
+            width:auto;
+            height:auto;
+            object-fit:contain;
             transition: transform 0.3s;
         }
         .product-img-box:hover img {
@@ -276,7 +279,7 @@
             gap:6px;
         }
 
-        /* ========== 弹窗样式 ========== */
+        /* ========== 弹窗样式【重点优化文字边距】 ========== */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -311,7 +314,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 1.5rem;
         }
         .modal-img-wrap img {
             max-width: 100%;
@@ -319,9 +322,6 @@
             width: auto;
             height: auto;
             object-fit: contain;
-        }
-        .modal-content-wrap {
-            padding: 2rem;
         }
         .modal-close {
             position: absolute;
@@ -340,18 +340,23 @@
             z-index: 2;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
+        /* 增大弹窗文字区域内边距，解决文字贴边问题 */
+        .modal-content-wrap {
+            padding: 2.2rem 2.2rem 2.5rem;
+        }
         .modal-content-wrap h2 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color:#1e293b;
+            line-height:1.35;
         }
         .modal-content-wrap .desc-text {
             color:#475569;
-            line-height:1.7;
-            margin-bottom:1.5rem;
+            line-height:1.8;
+            margin-bottom:1.8rem;
             text-align: justify;
             hyphens: auto;
         }
-        /* 修复按钮底色丢失 */
+        /* 按钮样式 */
         .btn-primary {
             display: inline-flex;
             align-items: center;
@@ -435,6 +440,10 @@
             html {
                 scroll-padding-top: 130px;
             }
+            /* 移动端弹窗额外加宽内边距 */
+            .modal-content-wrap {
+                padding: 1.8rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -490,40 +499,88 @@
 
             <!-- 产品卡片2 -->
             <div class="product-card"
-                 data-img="images/excavator.jpg"
-                 data-title="Construction Excavators"
-                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
+                 data-img="./image/weldingmachine/AutomaticRingForming&WeldingMachine.png"
+                 data-title="Automatic Ring Forming & Welding Machine"
+                 data-desc="This integrated ring forming and welding machine operates through a closed-loop servo-controlled feeding system. Two direct-drive motors feed the wire forward, while a rotary encoder and servo motor encoder work together to monitor and adjust position in real time. An intelligent S-curve speed profile ensures smooth acceleration and deceleration. Once the preset ring diameter is reached, the machine automatically triggers the welding process without manual intervention.">
                 <div class="product-img-box">
-                    <img src="images/excavator.jpg" alt="Construction Excavators">
+                    <img src="/image/weldingmachine/AutomaticRingForming&WeldingMachine.png" alt="Automatic Ring Forming & Welding Machine">
                 </div>
                 <div class="product-info">
-                    <h3>Construction Excavators</h3>
+                    <h3>Automatic Ring Forming & Welding Machine</h3>
                     <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
+            <!-- 产品卡片3 -->
             <div class="product-card"
-                 data-img="images/excavator.jpg"
-                 data-title="Construction Excavators"
-                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
+                 data-img="./image/weldingmachine/Cobot-CollaborativeHandlingRobot.png"
+                 data-title="Baghouse Dust Collector Welding Machine"
+                 data-desc="Designed for intuitive operation, this collaborative robot features a drag-and-teach function for quick repositioning around the welding point. The end manipulator enables rapid programming without conventional instruction, using a rocker to move the welding torch in six directions while recording points and commands directly. Operators can adjust speed and swing parameters in real time, with key information shown on the onboard display. The welding gun uses a quick-release mechanism requiring only one screw for fast installation. An optional magnetic base is available for direct mounting onto the workpiece.">
                 <div class="product-img-box">
-                    <img src="images/excavator.jpg" alt="Construction Excavators">
+                    <img src="./image/weldingmachine/Cobot-CollaborativeHandlingRobot.png" alt="Cobot - Collaborative / Handling Robot">
                 </div>
                 <div class="product-info">
-                    <h3>Construction Excavators</h3>
+                    <h3>Cobot - Collaborative / Handling Robot</h3>
                     <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
 
+            <!-- 产品卡片4 -->
             <div class="product-card"
-                 data-img="images/excavator.jpg"
-                 data-title="Construction Excavators"
-                 data-desc="Multiple tonnage models, CE certified, stable performance for mining & building projects. Suitable for earthmoving, road construction, quarry work and urban engineering.">
+                 data-img="./image/weldingmachine/Copper-AluminumTubeButtWeldingMachine.png"
+                 data-title="Copper-Aluminum Tube Butt Welding Machine"
+                 data-desc="This butt welding machine is specifically engineered for the reliable joining of copper tubes to aluminum tubes. It serves as a direct, high-efficiency replacement for conventional high-voltage flash butt welding machines and brazing equipment. By delivering strong, consistent welds with minimal thermal impact, this unit significantly reduces oxidation and energy consumption, offering a superior solution for dissimilar metal tube connections.">
                 <div class="product-img-box">
-                    <img src="images/excavator.jpg" alt="Construction Excavators">
+                    <img src="./image/weldingmachine/Copper-AluminumTubeButtWeldingMachine.png" alt="Copper-Aluminum Tube Butt Welding Machine">
                 </div>
                 <div class="product-info">
-                    <h3>Construction Excavators</h3>
+                    <h3>Copper-Aluminum Tube Butt Welding Machine</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 产品卡片5 -->
+ 
+            
+
+            <!-- 产品卡片6 -->
+            <div class="product-card"
+                 data-img="./image/weldingmachine/Turntable-TypeCopperManifoldBrazingMachine.png"
+                 data-title="Turntable-Type Copper Manifold Brazing Machine"
+                 data-desc="This butt welding machine is specifically engineered for the reliable joining of copper tubes to aluminum tubes. It serves as a direct, high-efficiency replacement for conventional high-voltage flash butt welding machines and brazing equipment. By delivering strong, consistent welds with minimal thermal impact, this unit significantly reduces oxidation and energy consumption, offering a superior solution for dissimilar metal tube connections.">
+                <div class="product-img-box">
+                    <img src="./image/weldingmachine/Turntable-TypeCopperManifoldBrazingMachine.png" alt="Turntable-Type Copper Manifold Brazing Machine">
+                </div>
+                <div class="product-info">
+                    <h3>Turntable-Type Copper Manifold Brazing Machine</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 产品卡片7 -->
+            <div class="product-card"
+                 data-img="./image/weldingmachine/OxyhydrogenWeldingMachine.png"
+                 data-title="Oxyhydrogen Welding Machine"
+                 data-desc="The water-powered hydrogen-oxygen generator utilizes an aqueous solution of electrolytic powder (potassium hydroxide) as the electrolyte. Based on the principle of water electrolysis, it produces hydrogen as the fuel gas and oxygen as the combustion-supporting gas. These two gases are mixed at the optimal combustion ratio of 2:1 (hydrogen to oxygen) and are ignited by a dedicated hydrogen-oxygen welding torch, generating a high-temperature hydrogen-oxygen flame.">
+                <div class="product-img-box">
+                    <img src="./image/weldingmachine/OxyhydrogenWeldingMachine.png" alt="Oxyhydrogen Welding Machine">
+                </div>
+                <div class="product-info">
+                    <h3>Oxyhydrogen Welding Machine</h3>
+                    <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- 产品卡片8 -->
+            <div class="product-card"
+                 data-img="./image/weldingmachine/ElectronBeamWeldingMachine.png"
+                 data-title="Electron Beam Welding Machine"
+                 data-desc="A high-performance vacuum electron beam welding system for aerospace, automotive, nuclear, and medical industries. Features 150kV generators, deep penetration (up to 300mm), near-zero positioning error, and a contamination-free vacuum environment, delivering clean, mirror-like welds with minimal heat distortion. Welds refractory and dissimilar metals, supports flexible beam scanning, and operates at high speed. Backed by 20+ years of expertise and ISO9001 certification.">
+                <div class="product-img-box">
+                    <img src="./image/weldingmachine/ElectronBeamWeldingMachine.png" alt="Electron Beam Welding Machine">
+                </div>
+                <div class="product-info">
+                    <h3>Electron Beam Welding Machine</h3>
                     <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
