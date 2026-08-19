@@ -3,471 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-<title>All Equipment | Leading Machinery</title>
+<title>Welding Machine | Machinery</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<style>
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-        }
-
-
-html {
--webkit-tap-highlight-color: transparent;
-scroll-behavior: smooth;
-scroll-padding-top: 85px;
-        }
-
-
-body {
-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-background-color: #fafcfb;
-color: #1e293b;
-line-height: 1.5;
-overflow-x: hidden;
-        }
-
-
-img {
-max-width: 100%;
-height: auto;
-display: block;
-        }
-
-
-.container {
-width: 100%;
-max-width: 1280px;
-margin-left: auto;
-margin-right: auto;
-padding-left: clamp(1rem, 5vw, 2rem);
-padding-right: clamp(1rem, 5vw, 2rem);
-        }
-
-
-/* 导航栏样式 */
-.navbar {
-background-color: #ffffff;
-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-position: sticky;
-top: 0;
-z-index: 1000;
-padding: 12px 0;
-        }
-.nav-flex {
-display: flex;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 12px;
-        }
-.logo h1 {
-font-size: clamp(1.4rem, 6vw, 2rem);
-font-weight: 800;
-letter-spacing: -0.02em;
-background: linear-gradient(135deg, #1a4c3b, #c4451c);
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
-line-height: 1.2;
-        }
-.logo span {
-font-size: 0.7rem;
-font-weight: 600;
-color: #c2410c;
-background: #fff1ed;
-display: inline-block;
-padding: 2px 10px;
-border-radius: 40px;
-margin-top: 6px;
-        }
-.nav-links {
-display: flex;
-flex-wrap: wrap;
-gap: clamp(0.6rem, 3vw, 1.5rem);
-list-style: none;
-align-items: center;
-        }
-.nav-links > li {
-position: relative;
-        }
-
-
-.nav-links a {
-text-decoration: none;
-font-weight: 600;
-font-size: 0.85rem;
-white-space: nowrap;
-background-color: #2c5f4a;
-color: white;
-padding: 6px 16px;
-border-radius: 40px;
-display: inline-flex;
-align-items: center;
-gap: 6px;
-transition: all 0.2s ease;
-        }
-.nav-links a:hover {
-background-color: #c2410c;
-transform: translateY(-2px);
-        }
-.contact-btn {
-background-color: #c2410c;
-color: white;
-padding: 6px 18px;
-border-radius: 40px;
-text-decoration: none;
-font-weight: 600;
-font-size: 0.85rem;
-transition: all 0.2s;
-display: inline-flex;
-align-items: center;
-gap: 8px;
-white-space: nowrap;
-        }
-.contact-btn:hover {
-background-color: #9a3412;
-transform: translateY(-2px);
-        }
-
-
-/* ========== 下拉菜单【优化版 - 解决鼠标丢失】 ========== */
-.nav-item-dropdown {
-position: relative;
-        }
-.dropdown-menu {
-visibility: hidden;
-opacity: 0;
-position: absolute;
-top: calc(100%);
-left: 0;
-margin-top: 0;
-background: #ffffff;
-border-radius: 16px;
-box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-min-width: 200px;
-padding: 10px 0;
-transition: visibility 0s linear 0.25s, opacity 0.22s ease;
-z-index: 999;
-pointer-events: none;
-        }
-/* 透明缓冲区，充当鼠标移动桥梁，消除空隙死区 */
-.nav-item-dropdown::after {
-content: "";
-position: absolute;
-width: 100%;
-height: 12px;
-left: 0;
-top: 100%;
-z-index: 998;
-        }
-.dropdown-menu.open {
-visibility: visible;
-opacity: 1;
-transition-delay: 0s;
-pointer-events: auto;
-        }
-/* PC端hover激活菜单 */
-@media (min-width:769px) {
-.nav-item-dropdown:hover .dropdown-menu {
-visibility: visible;
-opacity: 1;
-transition-delay: 0s;
-pointer-events: auto;
-            }
-        }
-.dropdown-menu li {
-list-style: none;
-        }
-.dropdown-menu a {
-background: transparent;
-color: #1e293b;
-border-radius: 0;
-padding: 10px 20px;
-width: 100%;
-display: flex;
-        }
-.dropdown-menu a:hover {
-background-color: #f7ede6;
-color: #c2410c;
-transform: none;
-        }
-
-
-/* 页面头部banner */
-.page-banner {
-background: linear-gradient(115deg, #ffffff 20%, #f2f4f0 100%);
-padding: clamp(2rem, 8vw, 3.5rem) 0;
-text-align: center;
-        }
-.page-banner h1 {
-font-size: clamp(1.8rem, 6vw, 2.8rem);
-color: #1e3a2f;
-margin-bottom: 0.8rem;
-font-weight: 800;
-        }
-.page-banner p {
-max-width: 700px;
-margin: 0 auto;
-color:#2d3e3a;
-font-size: clamp(0.95rem,3vw,1.05rem);
-        }
-
-
-/* 产品卡片区域 */
-.product-list {
-padding: clamp(3rem, 8vw, 5rem) 0;
-        }
-.product-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 2rem;
-        }
-.product-card {
-background:#fff;
-border-radius:32px;
-overflow:hidden;
-border:1px solid #e2ede7;
-transition:0.25s;
-        }
-.product-card:hover {
-transform: translateY(-6px);
-box-shadow:0 20px 30px -10px rgba(0,0,0,0.12);
-        }
-.product-img-box {
-height:220px;
-background:#eef2f5;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor: pointer;
-padding: 12px;
-        }
-.product-img-box img {
-max-width:100%;
-max-height:100%;
-width:auto;
-height:auto;
-object-fit:contain;
-transition: transform 0.3s;
-        }
-.product-img-box:hover img {
-transform: scale(1.03);
-        }
-.product-info {
-padding:1.5rem;
-        }
-.product-info h3 {
-font-size:1.2rem;
-margin-bottom:0.6rem;
-font-weight:700;
-        }
-.product-info p {
-color:#475569;
-font-size:0.9rem;
-margin-bottom:1rem;
-        }
-.product-info a {
-color:#c2410c;
-font-weight:700;
-text-decoration:none;
-display:inline-flex;
-align-items:center;
-gap:6px;
-        }
-
-
-/* ========== 弹窗样式【重点优化文字边距】 ========== */
-.modal-overlay {
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.75);
-z-index: 9999;
-display: none;
-align-items: center;
-justify-content: center;
-padding: 1rem;
-        }
-.modal-overlay.active {
-display: flex;
-        }
-.modal-box {
-background: #fff;
-border-radius: 24px;
-max-width: 900px;
-width: 100%;
-max-height: 90vh;
-overflow-y: auto;
-display: grid;
-grid-template-columns: 1fr 1fr;
-position: relative;
-        }
-@media (max-width:768px){
-.modal-box {
-grid-template-columns: 1fr;
-            }
-        }
-.modal-img-wrap {
-background-color: #f3f4f6;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 1.5rem;
-        }
-.modal-img-wrap img {
-max-width: 100%;
-max-height: 70vh;
-width: auto;
-height: auto;
-object-fit: contain;
-        }
-.modal-close {
-position: absolute;
-top: 1rem;
-right: 1rem;
-width: 36px;
-height:36px;
-border-radius:50%;
-background:#fff;
-border:none;
-font-size:18px;
-cursor:pointer;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index: 2;
-box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
-/* 增大弹窗文字区域内边距，解决文字贴边问题 */
-.modal-content-wrap {
-padding: 2.2rem 2.2rem 2.5rem;
-        }
-.modal-content-wrap h2 {
-margin-bottom: 1.2rem;
-color:#1e293b;
-line-height:1.35;
-        }
-.modal-content-wrap .desc-text {
-color:#475569;
-line-height:1.8;
-margin-bottom:1.8rem;
-text-align: justify;
-hyphens: auto;
-white-space: pre-line; /* 关键：识别换行符号自动换行 */
-        }
-/* 按钮样式 */
-.btn-primary {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-padding: 12px 28px;
-border-radius: 60px;
-font-weight: 700;
-text-decoration: none;
-transition: all 0.2s ease;
-font-size: 0.9rem;
-cursor: pointer;
-background-color: #2c5f4a;
-color: white;
-border: none;
-        }
-.btn-primary:hover {
-background-color: #1a4c3b;
-        }
-
-
-/* 页脚样式 */
-.footer {
-background-color: #0e1f1a;
-color: #cbdcd2;
-padding: 3rem 0 1.5rem;
-        }
-.footer-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-gap: 2rem;
-margin-bottom: 2.5rem;
-        }
-.footer-col h4 {
-color: #f7ede4;
-margin-bottom: 1.2rem;
-font-size: 1.1rem;
-        }
-.footer-col ul {
-list-style: none;
-        }
-.footer-col li, .footer-col p {
-margin-bottom: 10px;
-font-size: 0.85rem;
-        }
-.footer-col a {
-color: #cbdcd2;
-text-decoration: none;
-transition: 0.2s;
-        }
-.footer-col a:hover {
-color: #dd884b;
-        }
-.social-icons i {
-font-size: 1.3rem;
-margin-right: 18px;
-transition: 0.2s;
-cursor: pointer;
-        }
-.social-icons i:hover {
-color: #dd7a3a;
-transform: translateY(-2px);
-        }
-.copyright {
-text-align: center;
-padding-top: 2rem;
-border-top: 1px solid #2c463b;
-font-size: 0.75rem;
-        }
-
-
-/* 移动端基础布局 */
-@media (max-width: 768px) {
-.nav-flex {
-flex-direction: column;
-text-align: center;
-            }
-.nav-links {
-justify-content: center;
-            }
-.contact-btn {
-margin-top: 6px;
-            }
-html {
-scroll-padding-top: 130px;
-            }
-/* 移动端弹窗额外加宽内边距 */
-.modal-content-wrap {
-padding: 1.8rem 1.5rem;
-            }
-        }
-</style>
+<link rel="stylesheet" href="./css/product/style.css">
 </head>
 <body>
 
+<!-- 图片全屏预览模块 -->
+<div class="image-preview-overlay" id="imagePreviewOverlay">
+<span class="preview-close" id="previewClose"><i class="fas fa-times"></i></span>
+<img id="previewImg" src="" alt="preview">
+</div>
 
 <nav class="navbar">
 <div class="container nav-flex">
 <div class="logo">
-<h1>LEADING MACHINERY<span>Heavy Industry & Global Trade</span></h1>
+<h1> MACHINERY<span>Heavy Industry & Global Trade</span></h1>
 </div>
 <ul class="nav-links">
 <li><a href="index.html">HOME</a></li>
 <li><a href="index.html#services">SERVICES</a></li>
 <li class="nav-item-dropdown">
-<a class="dropdown-trigger" style="background:#c2410c;"><span>EQUIPMENT</span> <i class="fas fa-chevron-down"></i></a>
+<a class="dropdown-trigger"><span>PRODUCTS</span> <i class="fas fa-chevron-down"></i></a>
 <ul class="dropdown-menu">
-<li><a href="welding-machines.html">Welding Machines</a></li>
-<li><a href="rim-machinery.html">Rim Making Equipment</a></li>
+<li><a href="welding-machines.html">Welding Machine</a></li>
+<li><a href="rim-machinery.html">Rim Making Machine</a></li>
 <li><a href="spare-parts.html">Spare Parts & Attachments</a></li>
 <li><a href="custom-line.html">Custom Production Lines</a></li>
 <li><a href="products.html">View All Products</a></li>
@@ -479,14 +42,12 @@ padding: 1.8rem 1.5rem;
 </div>
 </nav>
 
-
 <section class="page-banner">
 <div class="container">
-<h1>Heavy Equipment & Industrial Machinery</h1>
-<p>High-performance machinery tailored for infrastructure, mining, agriculture and energy sectors. Send inquiry to get technical parameters & best quotation.</p>
+<h1>Welding Machinery</h1>
+<p>High‑performance welding machinery for industrial welding applications. Send inquiry to get technical parameters & best quotation.</p>
 </div>
 </section>
-
 
 <section class="product-list">
 <div class="container">
@@ -505,7 +66,6 @@ data-desc="This bag cage welding machine is designed for producing filter bag ca
 </div>
 </div>
 
-
 <!-- 产品卡片2 -->
 <div class="product-card"
 data-img="./image/weldingmachine/AutomaticRingForming&WeldingMachine.png"
@@ -519,7 +79,6 @@ data-desc="This integrated ring forming and welding machine operates through a c
 <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
 </div>
 </div>
-
 
 <!-- 产品卡片3 -->
 <div class="product-card"
@@ -535,7 +94,6 @@ data-desc="Designed for intuitive operation, this collaborative robot features a
 </div>
 </div>
 
-
 <!-- 产品卡片4 -->
 <div class="product-card"
 data-img="./image/weldingmachine/Copper-AluminumTubeButtWeldingMachine.png"
@@ -549,7 +107,6 @@ data-desc="This butt welding machine is specifically engineered for the reliable
 <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
 </div>
 </div>
-
 
 <!-- 产品卡片5 -->
 <div class="product-card"
@@ -565,7 +122,6 @@ data-desc="Fronius’s all-new TPS/i series intelligent welding platform has bee
 </div>
 </div>
 
-
 <!-- 产品卡片6 -->
 <div class="product-card"
 data-img="./image/weldingmachine/Turntable-TypeCopperManifoldBrazingMachine.png"
@@ -579,7 +135,6 @@ data-desc="This butt welding machine is specifically engineered for the reliable
 <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
 </div>
 </div>
-
 
 <!-- 产品卡片7 -->
 <div class="product-card"
@@ -595,7 +150,6 @@ data-desc="The water-powered hydrogen-oxygen generator utilizes an aqueous solut
 </div>
 </div>
 
-
 <!-- 产品卡片8 -->
 <div class="product-card"
 data-img="./image/weldingmachine/ElectronBeamWeldingMachine.png"
@@ -609,7 +163,6 @@ data-desc="A high-performance vacuum electron beam welding system for aerospace,
 <a href="index.html#contact-form">Get Quote <i class="fas fa-arrow-right"></i></a>
 </div>
 </div>
-
 
 <!-- 产品卡片9 -->
 <div class="product-card"
@@ -625,8 +178,6 @@ data-desc="H-beam integrated welding station (assembling + welding + straighteni
 </div>
 </div>
 
-
-
 <!-- 产品卡片10 -->
 <div class="product-card"
 data-img="./image/weldingmachine/H-beamHorizontalAssemblyAndWeldingProductionLine.png"
@@ -641,15 +192,11 @@ data-desc="Horizontal type H-beam production line is a special welding line for 
 </div>
 </div>
 
-
-
 <!-- 产品卡片11 -->
 <div class="product-card"
 data-img="./image/weldingmachine/AirConditionerHeatExchangerWeldingMachine.png"
 data-title="Air Conditioner Heat Exchanger Welding Machine"
 data-desc="Composition of the equipment: The equipment consists of a conveyor belt carrying the workpiece, a gas mixer, a combustion head, and a fuselage, a gas source control box, a workpiece sliding guardrail, and a water cooling system supporting the lifting and angle adjustment of the combustion head.&#10;&#10;Equipment production process: The air conditioner heat exchanger automatically transports the heat exchanger into the equipment through the conveyor line. After the workpiece enters the welding area of ​​the equipment, the welding machine completes the positioning of the workpiece (including the height of the guide rod, the height of the burner, and the fire. The width/angle of the row and the size of the flame are adjusted by fire. The fire row swings by itself, and the workpiece is welded. After the heat exchanger is finished at the welding station, the conveyor line automatically sends the workpiece.&#10;&#10;the main working principle: natural gas, liquefied gas and oxygen are the combustion gas source of this machine.By adjusting the pressure of natural gas and oxygen entering the mixer, it is fully mixed and then burned into the burner to heat the welded workpiece; the inner wall of the copper tube of the workpiece is protected by nitrogen gas from the equipment, and the nitrogen in the welding section is sprayed from below the welding tip for protection. Welding; copper tubes and aluminum sheets near the weld zone are cooled by compressed air.The speed of the conveyor belt is steplessly adjustable, and the combustion head and the sliding guardrail near the combustion head are cooled by the cooling water.&#10;&#10;Mainly realized function: complete the welding of the connection between the long U tube and the small U tube of the heat exchanger.">
-
-
 <div class="product-img-box">
 <img src="./image/weldingmachine/AirConditionerHeatExchangerWeldingMachine.png" alt="Air Conditioner Heat Exchanger Welding Machine">
 </div>
@@ -659,14 +206,12 @@ data-desc="Composition of the equipment: The equipment consists of a conveyor be
 </div>
 </div>
 
-
 </div>
 <div style="text-align:center;margin-top:3rem;">
 <a href="index.html#contact-form" class="btn-primary">Request Full Equipment Catalog <i class="fas fa-arrow-right"></i></a>
 </div>
 </div>
 </section>
-
 
 <!-- 弹窗模块 -->
 <div class="modal-overlay" id="productModal">
@@ -683,7 +228,6 @@ data-desc="Composition of the equipment: The equipment consists of a conveyor be
 </div>
 </div>
 
-
 <footer class="footer">
 <div class="container">
 <div class="footer-grid">
@@ -696,96 +240,6 @@ data-desc="Composition of the equipment: The equipment consists of a conveyor be
 </div>
 </footer>
 
-
-<script>
-// 弹窗逻辑
-const modal = document.getElementById('productModal');
-const modalImg = document.getElementById('modalImage');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const closeBtn = document.getElementById('closeModal');
-
-
-document.querySelectorAll('.product-img-box').forEach(box => {
-box.addEventListener('click', function(){
-const card = this.closest('.product-card');
-modalImg.src = card.dataset.img;
-modalTitle.textContent = card.dataset.title;
-modalDesc.textContent = card.dataset.desc;
-modal.classList.add('active');
-document.body.style.overflow = 'hidden';
-    })
-})
-function closeModalFunc(){
-modal.classList.remove('active');
-document.body.style.overflow = '';
-}
-closeBtn.addEventListener('click', closeModalFunc);
-modal.addEventListener('click', function(e){
-if(e.target === modal){
-closeModalFunc();
-    }
-})
-
-
-// 页面内平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function(e) {
-const href = this.getAttribute('href');
-if(href !== '#'){
-const target = document.querySelector(href);
-if(target) {
-e.preventDefault();
-const navHeight = document.querySelector('.navbar').offsetHeight || 80;
-window.scrollTo({
-top: target.getBoundingClientRect().top + window.scrollY - navHeight - 12,
-behavior: 'smooth'
-                });
-            }
-        }
-    })
-})
-
-
-// ========== 下拉菜单核心JS ==========
-const DROPDOWN_BREAKPOINT = 769;
-const trigger = document.querySelector('.dropdown-trigger');
-const menu = document.querySelector('.dropdown-menu');
-let isMobileMode = window.innerWidth < DROPDOWN_BREAKPOINT;
-
-
-function toggleDropdown() {
-menu.classList.toggle('open');
-}
-function closeDropdown() {
-menu.classList.remove('open');
-}
-
-
-trigger.addEventListener('click', function(e){
-e.preventDefault();
-toggleDropdown();
-});
-
-
-// 点击空白关闭下拉
-document.addEventListener('click', function(e){
-if(!e.target.closest('.nav-item-dropdown')){
-closeDropdown();
-    }
-});
-
-
-// 窗口缩放自动重置菜单
-window.addEventListener('resize', function(){
-const newMobile = window.innerWidth < DROPDOWN_BREAKPOINT;
-if(newMobile !== isMobileMode){
-isMobileMode = newMobile;
-closeDropdown();
-    }
-});
-</script>
-
-
+<script src="./js/product/script.js"></script>
 </body>
 </html>
